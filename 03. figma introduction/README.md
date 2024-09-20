@@ -1,7 +1,4 @@
 # React_Khurotul-Aini_Batch7
-
-3 poin penting yang di pelajari dari materi
-
-1. Front-end berfokus pada tampilan dan interaksi pengguna di situs web atau aplikasi.
-2. Menggunakan HTML, CSS, dan JavaScript, serta sebagai penghubung antara ui/ux dan back end
-3. Bertujuan untuk menciptakan pengalaman pengguna yang  responsif, menarik, dan mudah digunakan .
+1. figma dalam front dapat di gunakan untuk prototyping 
+2. selain itu dalam figma juga memungkinkan mengekspor aset desain seperti gambar, ikon dalam format svg atau png yang siap digunakan di front-end
+3. selain itu juga berguna untuk SEO

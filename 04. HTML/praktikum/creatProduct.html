@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Product</title>
+</head>
+<body>
+    <h1>Create Product</h1>
+    <h2>Detail Product</h2>
+    <form>
+        <table>
+            <tr>
+                <tr>
+                    <td>Product name:</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="productName"></td>
+                </tr>
+            </tr>
+            <tr>
+                <tr>
+                    <td>Product Category:</td>
+                </tr>
+                <tr>
+                    <td><select name="productCategory" style="width: 150px;>
+                        <option value=""></option>
+                    </select></td>
+                </tr>
+
+            </tr>
+            <tr>
+                <tr>
+                    <td>Product Freshness:</td>
+                </tr>
+                <td>
+                    <input type="radio" name="freshness" value="brandNew"> Brand New<br>
+                    <input type="radio" name="freshness" value="secondHand"> Second Hand<br>
+                    <input type="radio" name="freshness" value="refurbished"> Refurbished
+                </td>
+            </tr>
+            <tr>
+                <td>Image of Product:</td>
+                <td><input type="file" name="productImage"></td>
+            </tr>
+            <tr>
+                <tr>
+                    <td>Additional Description:</td>
+                </tr>
+                <tr>
+                    <td><textarea name="additionalDescription"></textarea></td>
+                </tr>
+            </tr>
+            <tr>
+                <tr>
+                    <td>Product price:</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="productPrice" placeholder="$ 100"></td>
+                </tr>
+            </tr>
+            <tr>
+                <td ><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
