@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Product</title>
+    <script>
+        function validateForm() {
+            var productName = document.forms["productForm"]["productName"].value;
+            var productPrice = document.forms["productForm"]["productPrice"].value;
+
+            if (productName.length < 6 || productName.length > 50) {
+                alert("Product Name must be between 6 and 50 characters.");
+                return false;
+            }
+
+            if (isNaN(productPrice)) {
+                alert("Product Price must be a number.");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Create Product</h1>
@@ -14,7 +30,7 @@
                     <td>Product name:</td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="productName"></td>
+                    <td><input type="text" name="productName" minlength="6" maxlength="50" required></td>
                 </tr>
             </tr>
             <tr>
@@ -22,9 +38,9 @@
                     <td>Product Category:</td>
                 </tr>
                 <tr>
-                    <td><select name="productCategory" style="width: 150px;>
-                        <option value=""></option>
-                    </select></td>
+                    <td><select name="productCategory" style="width: 150px;" required>
+                        <option value="cosmetic">cosmetic</option>
+                        <option value="clothes">clothes</option>                    </select></td>
                 </tr>
 
             </tr>
@@ -33,21 +49,21 @@
                     <td>Product Freshness:</td>
                 </tr>
                 <td>
-                    <input type="radio" name="freshness" value="brandNew"> Brand New<br>
-                    <input type="radio" name="freshness" value="secondHand"> Second Hand<br>
-                    <input type="radio" name="freshness" value="refurbished"> Refurbished
+                    <input type="radio" name="freshness" value="brandNew" required> Brand New<br>
+                    <input type="radio" name="freshness" value="secondHand" required> Second Hand<br>
+                    <input type="radio" name="freshness" value="refurbished" required> Refurbished
                 </td>
             </tr>
             <tr>
                 <td>Image of Product:</td>
-                <td><input type="file" name="productImage"></td>
+                <td><input type="file" name="productImage" required></td>
             </tr>
             <tr>
                 <tr>
                     <td>Additional Description:</td>
                 </tr>
                 <tr>
-                    <td><textarea name="additionalDescription"></textarea></td>
+                    <td><textarea name="additionalDescription" required></textarea></td>
                 </tr>
             </tr>
             <tr>
@@ -55,7 +71,7 @@
                     <td>Product price:</td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="productPrice" placeholder="$ 100"></td>
+                    <td><input type="text" name="productPrice" placeholder="$ 100" required></td>
                 </tr>
             </tr>
             <tr>
