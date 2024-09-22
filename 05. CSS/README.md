@@ -1,3 +1,5 @@
+# React_Khurotul-Aini_Batch7
+
 01. CSS (Cascading Style Sheets) adalah bahasa yang digunakan untuk mendesain dan mengatur tampilan halaman web. Dengan CSS, kamu dapat mengontrol tata letak, warna, font, margin, padding, dan elemen visual lainnya yang mempengaruhi bagaimana konten HTML ditampilkan di browser.
 
 02. Selector digunakan untuk memilih elemen HTML mana yang ingin kita atur tampilannya. Contohnya:
