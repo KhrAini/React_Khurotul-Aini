@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Product</title>
+
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Perbaikan dilakukan di sini -->
+
+    <script>
+        function validateForm() {
+            var productName = document.forms["productForm"]["productName"].value;
+            var productPrice = document.forms["productForm"]["productPrice"].value;
+
+            if (productName.length < 6 || productName.length > 50) {
+                alert("Product Name must be between 6 and 50 characters.");
+                return false;
+            }
+
+            if (isNaN(productPrice)) {
+                alert("Product Price must be a number.");
+                return false;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <header class=" flex items-center justify-between shadow-md p-4">
+        <h1 class="text-[24px] font-bold ">Simple Header</h1>
+        <div class="ml-auto">
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">Home</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">Features</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">Pricing</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">FAQs</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">About</button>
+        </div>
+    </header>
+    
+    <div class="min-h-screen flex flex-col justify-center items-center ">
+        <div class="text-center my-12 w-1/2 p-4">
+            <img src="logo.png" alt="logo Bootstrap" class="w-24 mx-auto  mt-8">
+            <h1 class="text-[31px] font-bold mb-2" >Create Product </h1>
+            <p class="text">
+                Below is an example form built entirely with Bootstrap’s form controls. Each required form group has  a validation state that can be triggered by attempting to submit the form without completing it.
+            </p>
+        </div>
+        <div  class=" w-1/3  ">
+            <h1 class="text[23px] font-bold">Detail Product</h1>
+
+            <form >
+                <table class="text[16px]">
+                    <tr>
+                        <tr>
+                            <td >Product name:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="productName" minlength="6" maxlength="50" required
+                                class="border rounded-md border-gray outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 p-1"></td>
+                        </tr>
+                    </tr>
+                    <tr>
+                        <tr>
+                            <td>Product Category:</td>
+                        </tr>
+                        <tr>
+                            <td><select name="productCategory" style="width: 150px;" required
+                                class="border rounded-md border-gray outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 p-1">
+                                <option value="clothes">clothes</option></select></td>
+                        </tr>
+        
+                    </tr>
+                    <tr>
+                        <tr>
+                            <td>Product Freshness:</td>
+                        </tr>
+                        <td>
+                            <input type="radio" name="freshness" value="brandNew" required> Brand New<br>
+                            <input type="radio" name="freshness" value="secondHand" required> Second Hand<br>
+                            <input type="radio" name="freshness" value="refurbished" required> Refurbished
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Image of Product:</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="file" name="productImage" required class="hidden">
+                                <span class="border border-blue-500 bg-blue-500 text-white rounded-l-md py-1 px-2 transition duration-200 ease-in-out">
+                                    Choose File
+                                </span>
+                                <span id="fileName" class="border border-blue-500 text-blue-500 bg-transparent rounded-r-md py-1 px-2 ml-0">
+                                    No file chosen
+                                </span>
+                            </label>
+                        </td>                
+                        <tr>
+                            <td>Additional Description:</td>
+                        </tr>
+                        <tr>
+                            <td><textarea name="additionalDescription" required
+                                class="border rounded-md border-gray outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 p-1 w-full "></textarea>
+                            </td>
+                        </tr>
+                    </tr>
+                    <tr>
+                        <tr>
+                            <td>Product price:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="productPrice" placeholder="$ 1" required
+                                class="border rounded-md border-gray outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 p-1 w-full"></td>
+                        </tr>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div>
+            <input type="submit" value="Submit"
+            class="text-white bg-blue-500 border rounded px-48 py-2 my-24"></td>
+        </div>
+    </div>
+</body>
+</html>
