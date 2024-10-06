@@ -46,13 +46,12 @@
             };
             products.push(product);
 
-            // Update the table
             updateTable();
         }
 
         function updateTable() {
             const tableBody = document.querySelector("#productTableBody");
-            tableBody.innerHTML = ""; // Clear existing rows
+            tableBody.innerHTML = ""; 
 
             products.forEach((product, index) => {
                 const row = document.createElement("tr");
@@ -70,8 +69,8 @@
         }
 
         function deleteLastProduct() {
-            products.pop(); // Remove the last product
-            updateTable(); // Refresh the table
+            products.pop(); 
+            updateTable(); 
         }
 
         function searchProduct() {
