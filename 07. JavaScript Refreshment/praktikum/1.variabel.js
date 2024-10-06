@@ -7,5 +7,5 @@ function swapValues(a, b) {
 }
 swapValues(5, 10);
 //  Penjelasan:
-//     - di antara var, let, const, menurut saya lebih baik menggunakan let, karena function di atas memungkinkan variabel untuk di ubah, untuk itu let yang lebih baik di gunakan di banding var dan const.
+//     - di antara var, let, const, menurut saya lebih baik menggunakan let, karena function di atas memungkinkan variabel untuk lebih mudah di ubah, untuk itu let yang lebih baik di gunakan di banding var dan const.
 

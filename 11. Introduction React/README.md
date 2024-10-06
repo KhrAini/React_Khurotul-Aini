@@ -8,3 +8,4 @@
 - penulisan sebuah komponen di ikuti huruf besar / pascal case (HeroSection)
 - nama file dan nama function sebaiknya sama
 - apa yang di tulisakan di file dan di saat import boleh beda.
+ 

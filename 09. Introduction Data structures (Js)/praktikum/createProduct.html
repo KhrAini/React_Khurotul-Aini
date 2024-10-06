@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Product</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        let products = [];
+        
+        function validateForm() {
+            const productName = document.forms["productForm"]["productName"].value;
+            const productPrice = document.forms["productForm"]["productPrice"].value;
+
+            if (productName.length < 6 || productName.length > 50) {
+                alert("Product Name must be between 6 and 50 characters.");
+                return false;
+            }
+
+            if (isNaN(productPrice)) {
+                alert("Product Price must be a number.");
+                return false;
+            }
+            return true;
+        }
+
+        function addProduct() {
+            if (!validateForm()) {
+                return;
+            }
+
+            const form = document.forms["productForm"];
+            const productName = form["productName"].value;
+            const productCategory = form["productCategory"].value;
+            const productFreshness = form["freshness"].value;
+            const productPrice = form["productPrice"].value;
+            const additionalDescription = form["additionalDescription"].value;
+
+            const product = {
+                name: productName,
+                category: productCategory,
+                freshness: productFreshness,
+                price: productPrice,
+                description: additionalDescription,
+            };
+            products.push(product);
+
+            // Update the table
+            updateTable();
+        }
+
+        function updateTable() {
+            const tableBody = document.querySelector("#productTableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            products.forEach((product, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td class="px-4 py-2 border">${index + 1}</td>
+                    <td class="px-4 py-2 border">${product.name}</td>
+                    <td class="px-4 py-2 border">${product.category}</td>
+                    <td class="px-4 py-2 border">Image</td>
+                    <td class="px-4 py-2 border">${product.freshness}</td>
+                    <td class="px-4 py-2 border">${product.description}</td>
+                    <td class="px-4 py-2 border">$${product.price}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function deleteLastProduct() {
+            products.pop(); // Remove the last product
+            updateTable(); // Refresh the table
+        }
+
+        function searchProduct() {
+            const searchValue = prompt("Enter product name to search:");
+            const product = products.find(p => p.name.toLowerCase() === searchValue.toLowerCase());
+
+            if (product) {
+                alert(`Product found: \nName: ${product.name}\nCategory: ${product.category}\nPrice: $${product.price}`);
+            } else {
+                alert("Product not found!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="flex items-center justify-between shadow-md p-4">
+        <h1 class="text-[24px] font-bold ">Simple Header</h1>
+        <div class="ml-auto">
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">Home</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">Features</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">Pricing</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">FAQs</button>
+            <button class="bg-transparent hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded">About</button>
+        </div>
+    </header>
+
+    <div class="min-h-screen flex flex-col justify-center items-center">
+        <div class="text-center my-12 w-1/2 p-4">
+            <img src="logo.png" alt="logo Bootstrap" class="w-24 mx-auto  mt-8 mb-5">
+            <h1 class="text-[31px] font-bold mb-2">Create Product</h1>
+        </div>
+        
+        <div class="w-1/3">
+            <h1 class="text-[23px] font-bold mb-4">Detail Product</h1>
+
+            <form name="productForm">
+                <table class="text-[16px]">
+                    <tr>
+                        <td>Product name:</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="productName" required minlength="6" maxlength="50" class="border rounded-md p-1 w-full"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Category:</td>
+                    <tr>
+                        <td>
+                            <select name="productCategory" required class="border rounded-md p-1 w-full">
+                                <option value="clothes">Clothes</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="furniture">Furniture</option>
+                            </select>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Product Freshness:</td>
+                    <tr>
+                        <td>
+                            <input type="radio" name="freshness" value="Brand New" required> Brand New<br>
+                            <input type="radio" name="freshness" value="Second Hand" required> Second Hand<br>
+                            <input type="radio" name="freshness" value="Refurbished" required> Refurbished
+                        </td>                        
+                    </tr>
+
+                    </tr>
+                    <tr>
+                        <td>Product price:</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="productPrice" placeholder="$1" required class="border rounded-md p-1 w-full"></td>
+                    </tr>
+                    <tr>
+                        <td>Additional Description:</td>
+                    </tr>
+                    <tr>
+                        <td><textarea name="additionalDescription" required class="border rounded-md p-1 w-full"></textarea></td>
+                    </tr>
+                </table>
+            </form>
+            <button onclick="addProduct()" class="bg-blue-500 text-white mt-4 px-6 py-2 rounded">Submit</button>
+        </div>
+
+        <div class="mt-8 ">
+            <h1 class="font-bold container mx-auto p-6 ">List Product</h1>
+            <table class="min-w-full table-auto bg-white border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="px-4 py-2 border">No</th>
+                        <th class="px-4 py-2 border">Product Name</th>
+                        <th class="px-4 py-2 border">Product Category</th>
+                        <th class="px-4 py-2 border">Image of Product</th>
+                        <th class="px-4 py-2 border">Product Freshness</th>
+                        <th class="px-4 py-2 border">Additional Description</th>
+                        <th class="px-4 py-2 border">Product Price</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex mt-4 space-x-4">
+            <button onclick="deleteLastProduct()" class="bg-blue-500 text-white px-6 py-2 rounded">Delete Last Product</button>
+            <button onclick="searchProduct()" class="bg-blue-500 text-white px-6 py-2 rounded">Search by Product Name</button>
+        </div>
+    </div>
+</body>
+</html>
