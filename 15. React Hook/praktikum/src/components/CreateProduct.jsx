@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
-import Form from './components/form';
+import Form from './form';
 
 const EditProduct = () => {
+
+  
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
+
 
   const handleAddProduct = (product) => {
     const newProduct = { ...product, id: uuidv4() };
@@ -12,7 +15,7 @@ const EditProduct = () => {
   };
 
   const handleDelete = (id) => {
-    const confirmDelete = window.confirm("Apakah Anda yakin ingin menghapus produk ini?");
+    const confirmDelete = window.confirm(" yakin ingin menghapus produk ini?");
     if (confirmDelete) {
       setProducts(products.filter(product => product.id !== id));
     }
@@ -53,7 +56,7 @@ const EditProduct = () => {
               <td>{product.freshness}</td>
               <td>{product.productPrice}</td>
               <td>
-                <button onClick={() => handleEdit(product.id)} className="bg-yellow-400 px-2 py-1 rounded">Edit</button>
+                <button onClick={() => handleEdit(product.id)} className="text-white bg-blue-500 px-2 py-1 rounded">Edit</button>
                 <button onClick={() => handleDelete(product.id)} className="bg-red-500 text-white px-2 py-1 rounded ml-2">Delete</button>
               </td>
             </tr>

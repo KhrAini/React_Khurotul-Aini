@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import EditProduct from './EditProduct';
+import EditProduct from './components/CreateProduct';
 const CreateProduct = () => {
   return (
     <>

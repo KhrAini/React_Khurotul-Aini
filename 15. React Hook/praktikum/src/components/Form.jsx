@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../assets/Logo.png'; 
 
+
+
 const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
     const [productName, setProductName] = useState('');
     const [productCategory, setProductCategory] = useState('');
     const [freshness, setFreshness] = useState('');
     const [productPrice, setProductPrice] = useState('');
+
+    useEffect(() => {
+        alert("Welcome!"); 
+      }, []);
 
     useEffect(() => {
         if (editingProduct) {
