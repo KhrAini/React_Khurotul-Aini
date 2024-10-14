@@ -1,18 +1,22 @@
 import React from 'react';
 import logo from '../assets/Logo.png'; 
+import article from './Article';
 
 const Form = () => {
     const handleClick = () =>{
         const randomNumber = Math.floor(Math.random() * 200) + 1; 
         console.log(randomNumber);
     }
+
+    const language = 'en';
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <div className="text-center my-12 w-1/2 p-4">
         <img src={logo} alt="logo Bootstrap" className="w-24 mx-auto mt-8" />
-        <h1 className="text-[31px] font-bold mb-2">Create Product</h1>
+        <h1 className="text-[31px] font-bold mb-2">{article.title[language]}</h1>
         <p className="text">
-        Below is an example form built entirely with Bootstrap’s form controls. Each required form group has  a validation state that can be triggered by attempting to submit the form without completing it.
+        {article.description[language]}
         </p>
       </div>
 
