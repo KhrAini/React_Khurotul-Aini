@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../assets/Logo.png'; 
 
-
-
 const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
     const [productName, setProductName] = useState('');
     const [productCategory, setProductCategory] = useState('');
     const [freshness, setFreshness] = useState('');
     const [productPrice, setProductPrice] = useState('');
 
+    // Tampilkan alert saat halaman dibuka
     useEffect(() => {
         alert("Welcome!"); 
-      }, []);
+    }, []);
 
+    // Mengisi form dengan data produk saat mengedit
     useEffect(() => {
         if (editingProduct) {
             setProductName(editingProduct.productName);
@@ -22,6 +22,7 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
         }
     }, [editingProduct]);
 
+    // Fungsi untuk menangani pengiriman form
     const handleSubmit = (e) => {
         e.preventDefault();
         const product = { productName, productCategory, freshness, productPrice };
@@ -32,16 +33,23 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
             onAddProduct(product);
         }
 
+        // Reset form setelah pengiriman
+        resetForm();
+    };
+
+    // Fungsi untuk me-reset form
+    const resetForm = () => {
         setProductName('');
         setProductCategory('');
         setFreshness('');
         setProductPrice('');
     };
 
+    // Fungsi untuk menghasilkan angka acak
     const handleClick = () => {
         const randomNumber = Math.floor(Math.random() * 200) + 1; 
         console.log(randomNumber);
-    }
+    };
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center">
@@ -72,7 +80,7 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
                                         onChange={(e) => setProductName(e.target.value)}
                                         minLength={6}
                                         maxLength={50}
-                                        required=""
+                                        required
                                         className="border rounded-md border-gray outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 p-1 w-full"
                                     />
                                 </td>
@@ -86,7 +94,7 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
                                         name="productCategory"
                                         value={productCategory}
                                         onChange={(e) => setProductCategory(e.target.value)}
-                                        required=""
+                                        required
                                         className="border rounded-md border-gray outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 p-1"
                                     >
                                         <option value="">Select Category</option>
@@ -138,7 +146,7 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
                                         value={productPrice}
                                         onChange={(e) => setProductPrice(e.target.value)}
                                         placeholder="$ 1"
-                                        required=""
+                                        required
                                         className="border rounded-md border-gray outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 p-1 w-full"
                                     />
                                 </td>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
-import { Link } from 'react-router-dom'; // Import Link dari react-router-dom
+import { Link } from 'react-router-dom'; 
 import Form from './Form';
+import ProductDetails from './ProductDetails';
 
 const EditProduct = () => {
 
@@ -50,7 +51,9 @@ const EditProduct = () => {
           {products.map((product, index) => (
             <tr key={product.id}>
               <td>{index + 1}</td>
-              {/* Tambahkan Link di sini untuk mengarahkan ke halaman detail */}
+              {ProductDetails}
+              <ProductDetails product={product} />
+
               <td>
                 <Link to={`/product/${product.id}`} className="text-blue-500 underline">
                   {product.productName}
