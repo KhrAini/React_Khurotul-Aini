@@ -8,3 +8,6 @@ langkah2 deploy di vercel
     - pilih folder yg akan di deploy
     - deploy
     - tunggu selesai dan salin link hasil deployment
+
+
+- hasil deploy = https://react-khurotul-aini.vercel.app/
