@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import useStore from '../store/useStore';
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const products = useStore((state) => state.products);
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    const savedProducts = localStorage.getItem('products');
-    const products = savedProducts ? JSON.parse(savedProducts) : [];
-    const foundProduct = products.find((p) => p.id === id);
-
-    console.log('Saved products:', products); 
-    console.log('Found product:', foundProduct); 
-    setProduct(foundProduct);
-  }, [id]);
+    if (products.length > 0) {
+      const foundProduct = products.find((p) => p.id === id);
+      setProduct(foundProduct);
+    }
+  }, [id, products]);
 
   if (!product) {
     return <p>Product not found!</p>;
@@ -23,7 +22,7 @@ const ProductDetails = () => {
     <div className="container mx-auto">
       <h1 className="text-2xl font-bold mb-4">Product Details</h1>
       <img 
-        src={product.productImage}
+        src={product.image} 
         alt={product.productName} 
         className="w-1/2 h-auto mb-4" 
       />

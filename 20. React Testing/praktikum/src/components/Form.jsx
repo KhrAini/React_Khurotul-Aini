@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../assets/Logo.png';
 
-const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
+const Form = ({ onAddProduct, editingProduct, onSaveEdit, onImageChange }) => {
     const [productName, setProductName] = useState('');
     const [productCategory, setProductCategory] = useState('');
     const [freshness, setFreshness] = useState('');
@@ -14,72 +14,57 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
             setProductCategory(editingProduct.productCategory);
             setFreshness(editingProduct.freshness);
             setProductPrice(editingProduct.productPrice);
-            setProductImage(editingProduct.image);
         }
     }, [editingProduct]);
 
-    // Handler untuk pengiriman form
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        if (!isFormValid()) return; 
-
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            const product = createProductObject(reader.result);
-            editingProduct ? onSaveEdit(product) : onAddProduct(product);
-            resetForm(); 
-        };
-        reader.readAsDataURL(productImage); 
+        if (!isFormValid()) return;
+        const product = createProductObject();
+        editingProduct ? onSaveEdit(product) : onAddProduct(product);
+        resetForm();
     };
 
     const isFormValid = () => {
         const nameRegex = /^[a-zA-Z0-9 ]{3,50}$/;
         const priceRegex = /^[0-9]+$/;
-    
         if (!nameRegex.test(productName)) {
             alert('Nama Produk harus alfanumerik dan terdiri dari 3 hingga 50 karakter.');
             return false;
         }
-    
         if (!productCategory) {
             alert('Silakan pilih kategori produk.');
             return false;
         }
-    
         if (!['New', 'Used', 'Refurbished'].includes(freshness)) {
             alert('Silakan pilih kondisi produk yang valid.');
             return false;
         }
-    
         if (!priceRegex.test(productPrice)) {
             alert('Harga produk harus berupa angka.');
             return false;
         }
-
         if (!productImage) {
             alert('Silakan unggah gambar produk.');
             return false;
         }
-        
-        return true; 
+        return true;
     };
 
-    const createProductObject = (image) => ({
+    const createProductObject = () => ({
         productName,
         productCategory,
         freshness,
         productPrice,
-        image, 
-        id: editingProduct ? editingProduct.id : undefined 
+        image: productImage,
+        id: editingProduct ? editingProduct.id : undefined,
     });
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        if (file) {
-            if (isValidImage(file)) {
-                setProductImage(file); 
-            }
+        if (file && isValidImage(file)) {
+            setProductImage(file);
+            onImageChange(file);
         }
     };
 
@@ -93,7 +78,7 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
             alert('Ukuran gambar tidak boleh lebih dari 2MB.');
             return false;
         }
-        return true; 
+        return true;
     };
 
     const resetForm = () => {
@@ -102,11 +87,6 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
         setFreshness('');
         setProductPrice('');
         setProductImage(null);
-    };
-
-    const handleClick = () => {
-        const randomNumber = Math.floor(Math.random() * 200) + 1; 
-        console.log(randomNumber);
     };
 
     return (
@@ -198,12 +178,6 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
                         />
                     </div>
                 </form>
-            </div>
-
-            <div className='pb-10'>
-                <button onClick={handleClick} className='text-white bg-purple-500 border rounded-2xl px-4 py-2 my-4'>
-                    Click to get your lucky number!!
-                </button>
             </div>
         </div>
     );

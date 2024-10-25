@@ -18,6 +18,7 @@ const CreateProduct = () => {
   const handleAddProduct = (product) => {
     const newProduct = { ...product, id: uuidv4(), image: productImage };
     setProducts((prevProducts) => [...prevProducts, newProduct]);
+    setProductImage(null); 
   };
 
   const handleDeleteProduct = (id) => {
@@ -84,6 +85,7 @@ const ProductTable = ({ products, onEdit, onDelete }) => (
     <thead>
       <tr>
         <th>No</th>
+        <th>ID Produk</th>
         <th>Nama Produk</th>
         <th>Kategori Produk</th>
         <th>Kualitas Produk</th>
@@ -96,6 +98,7 @@ const ProductTable = ({ products, onEdit, onDelete }) => (
       {products.map((product, index) => (
         <tr key={product.id}>
           <td>{index + 1}</td>
+          <td>{product.id}</td> 
           <td>
             <Link to={`/product/${product.id}`} className="text-blue-500 underline">
               {product.productName}

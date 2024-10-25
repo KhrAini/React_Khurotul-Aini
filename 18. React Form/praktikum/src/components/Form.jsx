@@ -18,7 +18,6 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
         }
     }, [editingProduct]);
 
-    // Handler untuk pengiriman form
     const handleSubmit = (e) => {
         e.preventDefault();
         
@@ -83,6 +82,7 @@ const Form = ({ onAddProduct, editingProduct, onSaveEdit }) => {
         }
     };
 
+    // Fungsi untuk validasi gambar
     const isValidImage = (file) => {
         const validImageTypes = ['image/jpeg', 'image/png'];
         if (!validImageTypes.includes(file.type)) {

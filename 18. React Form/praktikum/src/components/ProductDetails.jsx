@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ProductDetails = () => {
-  const { id } = useParams();
+  const { id } = useParams(); 
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
     const savedProducts = localStorage.getItem('products');
     const products = savedProducts ? JSON.parse(savedProducts) : [];
-    const foundProduct = products.find((p) => p.id === id);
+    const foundProduct = products.find((p) => p.id === id); 
 
-    console.log('Saved products:', products); 
+    console.log('Saved products:', products);
     console.log('Found product:', foundProduct); 
     setProduct(foundProduct);
   }, [id]);
