@@ -1,3 +1,8 @@
 # React_Khurotul-Aini_Batch7
 
--
+
+- API (Application Programming Interface) adalah sekumpulan aturan dan protokol yang memungkinkan satu aplikasi berinteraksi dengan aplikasi lain. API mendefinisikan metode komunikasi antara berbagai komponen perangkat lunak, memungkinkan pengembang untuk menggunakan fungsionalitas atau data dari aplikasi lain tanpa harus memahami cara kerjanya secara internal.
+- REST (Reperesentational State Transfer) REST (Representational State Transfer) adalah arsitektur perangkat lunak untuk membangun layanan web yang mengelola sumber daya melalui protokol HTTP. REST bersifat stateless, menggunakan URL untuk mengidentifikasi sumber daya, dan metode HTTP seperti GET, POST, PUT, dan DELETE untuk operasi. Sumber daya dapat direpresentasikan dalam format seperti JSON dan XML.
+- JSON (JavaScript Object Notation) adalah format data ringan yang digunakan untuk pertukaran data antar aplikasi. JSON mudah dibaca manusia dan diparsing oleh mesin, menyusun data dalam bentuk pasangan kunci-nilai dan array. Format ini sering digunakan dalam komunikasi antara klien dan server, terutama dalam aplikasi web dan API.
+- Axios adalah library JavaScript yang digunakan untuk melakukan permintaan HTTP dari browser dan Node.js. Axios mendukung berbagai fitur, seperti menangani permintaan dan respons dalam format JSON, mengatur timeout, dan melakukan pengelolaan intersep untuk permintaan dan respons. Library ini juga mendukung pembatalan permintaan, penanganan kesalahan, dan pengaturan header secara mudah. Axios banyak digunakan dalam pengembangan aplikasi web untuk berinteraksi dengan API dan mengambil data secara asinkron.
+
