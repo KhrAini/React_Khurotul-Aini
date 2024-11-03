@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import Form from './Form';
 import useStore from '../store/useStore';
+import axios from 'axios';
 
 const CreateProduct = () => {
   const products = useStore((state) => state.products);
@@ -12,6 +13,21 @@ const CreateProduct = () => {
 
   const [editingProduct, setEditingProduct] = useState(null);
   const [productImage, setProductImage] = useState(null);
+  const [productList, setProductList] = useState([]); // Inisialisasi dengan array kosong
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("https://6718b2617fc4c5ff8f4a9e83.mockapi.io/productList");
+      console.log("Response dari API:", response.data);
+      setProductList(response.data); // Simpan data produk ke state
+    } catch (error) {
+      console.error("Error dari axios:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleAddProduct = (product) => {
     const newProduct = { ...product, id: uuidv4(), image: productImage };
@@ -60,10 +76,9 @@ const CreateProduct = () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product, index) => (
+          {productList.map((product, index) => ( // Ganti dengan productList
             <tr key={product.id}>
               <td className="border border-gray-300 p-2">{index + 1}</td>
-              <td className="border border-gray-300 p-2">{product.id}</td>
               <td className="border border-gray-300 p-2">
                 <Link to={`/product/${product.id}`} className="text-blue-500 underline">
                   {product.productName}
@@ -100,4 +115,3 @@ const CreateProduct = () => {
 };
 
 export default CreateProduct;
- 
